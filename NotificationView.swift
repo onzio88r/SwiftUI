@@ -9,11 +9,16 @@
 import SwiftUI
 
 struct NotificationView: View {
+    var title: String
+    var subtitle: String
+    var time: String
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            ZStack {
+        GeometryReader { _ in
+            VStack(alignment: .leading, spacing: 8) {
+                ZStack {
                     HStack {
-                        Image(systemName: "app.fill")
+                        Image(systemName: "app")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .padding(.leading, 8)
@@ -27,7 +32,7 @@ struct NotificationView: View {
                             .foregroundColor(.white.opacity(0.2))
                         
                         Spacer()
-                        Text("1h ago")
+                        Text(time)
                             .font(
                                 Font.custom("SF Pro Text", size: 12)
                                     .weight(.medium)
@@ -40,51 +45,56 @@ struct NotificationView: View {
                     .frame(maxWidth: .infinity, minHeight: 20, maxHeight: 20)
                     
                     
+                    
+                }
+                .frame(maxWidth: .infinity, minHeight: 20, maxHeight: 20)
                 
-            }
-            .frame(maxWidth: .infinity, minHeight: 20, maxHeight: 20)
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {   Text("Title")
-                        .font(
-                            Font.custom("SF Pro Text", size: 14)
-                                .weight(.bold)
-                        )
-                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.white.opacity(0.5))
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 0)
-                .frame(maxWidth: .infinity, alignment: .topLeading)
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {   
+                        Text(title)
+                            .font(
+                                Font.custom("SF Pro Text", size: 14)
+                                    .weight(.bold)
+                            )
+                            .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.white.opacity(0.5))
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 0)
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    
+                    
+                }
                 
-              
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {   
+                        Text(subtitle)
+                            .font(
+                                Font.custom("SF Pro Text", size: 14)
+                                    .weight(.light)
+                            )
+                            .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.white.opacity(0.5))
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 0)
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    
+                    
+                }
             }
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {   Text("Subtitle")
-                        .font(
-                            Font.custom("SF Pro Text", size: 14)
-                                .weight(.light)
-                        )
-                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.white.opacity(0.5))
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 0)
-                .frame(maxWidth: .infinity, alignment: .topLeading)
-                
-              
-            }
+            .padding(.horizontal, 0)
+            .padding(.vertical, 10)
+            .background(.white.opacity(0))
+            .background(.black.opacity(0.45))
+            .cornerRadius(12)
+            .padding(.horizontal, 15)
         }
-        .padding(.horizontal, 0)
-        .padding(.vertical, 10)
-        .background(.white.opacity(0))
-        .background(.black.opacity(0.45))
-        .cornerRadius(12)
     }
 }
 
 #Preview {
-    NotificationView()
+    NotificationView(title: "Title", subtitle: "Subtitle", time: "1h ago")
 }
