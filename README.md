@@ -3,13 +3,13 @@
 ![Screenshot](notification.png)
 
 
-Custom SwiftUI Notification View
+# **Custom SwiftUI Notification View**
 
 
 
 Custom SwiftUI Notification View is a versatile and easy-to-use SwiftUI component that allows you to integrate elegant and customizable notifications into your SwiftUI projects. It simplifies the process of presenting user-friendly alerts, messages, or updates, enhancing the overall user experience of your app.
 
-Features
+# **Features**
 
 Easy Integration: Seamlessly integrate the notification view into your SwiftUI projects with minimal effort.
 Customizable: Tailor the appearance and behavior of the notification to suit your app's design guidelines.
@@ -25,7 +25,6 @@ Present notifications in your SwiftUI views to enhance user communication.
 
 ```swift
 import SwiftUI
-import NotificationView
 
 struct ContentView: View {
     @State private var showNotification = false
@@ -38,9 +37,7 @@ struct ContentView: View {
                 self.showNotification.toggle()
             }
             .notification(isPresented: $showNotification, content: {
-                NotificationContent(title: "Success", message: "Operation completed successfully.")
-                    .foregroundColor(.white)
-                    .background(Color.green)
+                NotificationView(title: "Title", subtitle: "Subtitle", time: "1h ago")
             })
         }
     }
@@ -48,6 +45,6 @@ struct ContentView: View {
 ```
 
 
-License
+# **License**
 
 Custom SwiftUI Notification View is available under the MIT license. See the LICENSE file for more details.
