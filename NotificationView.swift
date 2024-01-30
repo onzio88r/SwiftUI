@@ -14,19 +14,23 @@ struct NotificationView: View {
     var time: String
     
     var body: some View {
+    
         GeometryReader { _ in
             VStack(alignment: .leading, spacing: 8) {
                 ZStack {
                     HStack {
-                        Image(systemName: "app")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding(.leading, 8)
-                            .padding(.trailing, 7)
+                        if let image = UIImage(named: AppConfig.appIcon()) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 6))
+                                .padding(.leading, 8)
+                                .padding(.trailing, 7)
+                        }
                         
-                        Text("App Name")
+                        Text(AppConfig.appName)
                             .font(
-                                Font.custom("SF Pro Text", size: 12)
+                                Font.system(size: 12)
                                     .weight(.medium)
                             )
                             .foregroundColor(.white.opacity(0.2))
@@ -34,7 +38,7 @@ struct NotificationView: View {
                         Spacer()
                         Text(time)
                             .font(
-                                Font.custom("SF Pro Text", size: 12)
+                                Font.system(size: 12)
                                     .weight(.medium)
                             )
                             .multilineTextAlignment(.trailing)
@@ -53,7 +57,7 @@ struct NotificationView: View {
                     VStack(alignment: .leading, spacing: 4) {   
                         Text(title)
                             .font(
-                                Font.custom("SF Pro Text", size: 14)
+                                Font.system(size: 14)
                                     .weight(.bold)
                             )
                             .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
@@ -71,7 +75,7 @@ struct NotificationView: View {
                     VStack(alignment: .leading, spacing: 4) {   
                         Text(subtitle)
                             .font(
-                                Font.custom("SF Pro Text", size: 14)
+                                Font.system(size: 14)
                                     .weight(.light)
                             )
                             .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
